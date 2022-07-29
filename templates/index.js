@@ -29,7 +29,8 @@ function reset() {
   stoppedDuration = 0;
   timeBegan = null;
   timeStopped = null;
-  document.getElementById("display-area").innerHTML = "00:00:00.000";
+  document.getElementById("display-stopwatch").innerHTML = "00:00:00.000";
+  document.getElementById("display-interval").innerHTML = "00:00:00.000";
 }
 
 function timer() {
@@ -43,7 +44,16 @@ function timer() {
   let sec = timeElapsed.getUTCSeconds();
   let ms = timeElapsed.getUTCMilliseconds();
 
-  document.getElementById("display-area").innerHTML =
+  document.getElementById("display-stopwatch").innerHTML =
+    (hour > 9 ? hour : "0" + hour) +
+    ":" +
+    (min > 9 ? min : "0" + min) +
+    ":" +
+    (sec > 9 ? sec : "0" + sec) +
+    "." +
+    (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
+
+  document.getElementById("display-interval").innerHTML =
     (hour > 9 ? hour : "0" + hour) +
     ":" +
     (min > 9 ? min : "0" + min) +
