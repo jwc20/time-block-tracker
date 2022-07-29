@@ -20,6 +20,10 @@ let timeStopped = null;
 let stoppedDuration = 0;
 let started = null;
 
+// Can't use these buttons before starting.
+document.getElementById("stop").disabled = true;
+document.getElementById("split").disabled = true;
+
 function start() {
   document.getElementById("start").disabled = true;
   document.getElementById("stop").disabled = false;
@@ -30,14 +34,13 @@ function start() {
   started = setInterval(timer, 10);
 }
 
-// Split method
-function split() {}
+
 
 function stop() {
   document.getElementById("start").disabled = false;
   document.getElementById("stop").disabled = true;
-  document.getElementById("reset").disabled = false;
   document.getElementById("split").disabled = true;
+  document.getElementById("reset").disabled = false;
   timeStopped = new Date();
   clearInterval(started);
 }
@@ -51,6 +54,9 @@ function reset() {
   document.getElementById("display-stopwatch").innerHTML = "00:00:00.000";
   document.getElementById("display-interval").innerHTML = "00:00:00.000";
 }
+
+// Split method
+function split() {}
 
 // Create table method
 function createTable() {}
