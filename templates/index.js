@@ -2,6 +2,14 @@ const start_button = document.getElementById("start");
 const split_button = document.getElementById("split");
 const stop_button = document.getElementById("stop");
 const reset_button = document.getElementById("reset");
+let time_table = document.createElement("table");
+let time_thead = document.createElement("thead");
+let time_tbody = document.createElement("tbody");
+
+time_table.appendChild(time_thead);
+time_table.appendChild(time_tbody);
+
+document.getElementById("time-table").appendChild(time_table);
 
 start_button.addEventListener("click", start);
 stop_button.addEventListener("click", stop);
@@ -18,6 +26,9 @@ function start() {
   started = setInterval(timer, 10);
 }
 
+// Split method
+function split() {}
+
 function stop() {
   timeStopped = new Date();
   clearInterval(started);
@@ -32,6 +43,9 @@ function reset() {
   document.getElementById("display-stopwatch").innerHTML = "00:00:00.000";
   document.getElementById("display-interval").innerHTML = "00:00:00.000";
 }
+
+// Create table method
+function createTable() {}
 
 function timer() {
   let currentTime = new Date();
