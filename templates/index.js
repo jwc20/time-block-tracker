@@ -42,16 +42,15 @@ function reset() {
 
 function timer() {
   let currentTime = new Date();
+  console.log(currentTime, timeBegan, stoppedDuration)
 
-  let timeElapsed = new Date(currentTime - timeBegan - stoppedDuration);
-  /*
+  //let timeElapsed = new Date(currentTime.getTime() - timeBegan.getTime() - stoppedDuration.getTime());
+  let timeElapsed = new Date(currentTime.getTime() - timeBegan.getTime());
   let hour = timeElapsed.getUTCHours();
   let min = timeElapsed.getUTCMinutes();
   let sec = timeElapsed.getUTCSeconds();
   let ms = timeElapsed.getUTCMilliseconds();
-  */
 
-  console.log(timeElapsed)
 
   document.getElementById("display-area").innerHTML =
     (hour > 9 ? hour : "0" + hour) +
