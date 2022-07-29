@@ -21,6 +21,10 @@ let stoppedDuration = 0;
 let started = null;
 
 function start() {
+  document.getElementById("start").disabled = true;
+  document.getElementById("stop").disabled = false;
+  document.getElementById("reset").disabled = true;
+  document.getElementById("split").disabled = false;
   if (timeBegan === null) timeBegan = new Date();
   if (timeBegan !== null) stoppedDuration += new Date() - timeStopped;
   started = setInterval(timer, 10);
@@ -30,6 +34,10 @@ function start() {
 function split() {}
 
 function stop() {
+  document.getElementById("start").disabled = false;
+  document.getElementById("stop").disabled = true;
+  document.getElementById("reset").disabled = false;
+  document.getElementById("split").disabled = true;
   timeStopped = new Date();
   clearInterval(started);
 }
