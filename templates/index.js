@@ -1,6 +1,3 @@
-/*
-const time_element = document.querySelector(".stopwatch .time");
-
 const start_button = document.getElementById("start");
 const split_button = document.getElementById("split");
 const stop_button = document.getElementById("stop");
@@ -10,19 +7,14 @@ start_button.addEventListener("click", start);
 stop_button.addEventListener("click", stop);
 reset_button.addEventListener("click", reset);
 
-*/
 let timeBegan = null;
 let timeStopped = null;
 let stoppedDuration = 0;
 let started = null;
 
 function start() {
-  if (timeBegan === null) {
-    timeBegan = new Date();
-  }
-  if (timeBegan !== null) {
-    stoppedDuration += new Date() - timeStopped;
-  }
+  if (timeBegan === null) timeBegan = new Date();
+  if (timeBegan !== null) stoppedDuration += new Date() - timeStopped;
   started = setInterval(timer, 10);
 }
 
@@ -42,7 +34,7 @@ function reset() {
 
 function timer() {
   let currentTime = new Date();
-  console.log(currentTime, timeBegan, stoppedDuration)
+  console.log(currentTime, timeBegan, stoppedDuration);
 
   //let timeElapsed = new Date(currentTime.getTime() - timeBegan.getTime() - stoppedDuration.getTime());
   let timeElapsed = new Date(currentTime.getTime() - timeBegan.getTime());
@@ -50,7 +42,6 @@ function timer() {
   let min = timeElapsed.getUTCMinutes();
   let sec = timeElapsed.getUTCSeconds();
   let ms = timeElapsed.getUTCMilliseconds();
-
 
   document.getElementById("display-area").innerHTML =
     (hour > 9 ? hour : "0" + hour) +
