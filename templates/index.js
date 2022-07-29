@@ -1,3 +1,4 @@
+/*
 const time_element = document.querySelector(".stopwatch .time");
 
 const start_button = document.getElementById("start");
@@ -5,31 +6,52 @@ const split_button = document.getElementById("split");
 const stop_button = document.getElementById("stop");
 const reset_button = document.getElementById("reset");
 
-let seconds = 0;
-let interval = null;
-
 start_button.addEventListener("click", start);
 stop_button.addEventListener("click", stop);
 reset_button.addEventListener("click", reset);
 
+*/
+let timeBegan = null;
+let timeStopped = null;
+let stoppedDuration = 0;
+let started = null;
+
+function start() {
+  if (timeBegan === null) {
+    timeBegan = new Date();
+  }
+  if (timeBegan !== null) {
+    stoppedDuration += new Date() - timeStopped;
+  }
+  started = setInterval(timer, 10);
+}
+
+function stop() {
+  timeStopped = new Date();
+  clearInterval(started);
+}
+
+function reset() {
+  clearInterval(started);
+
+  stoppedDuration = 0;
+  timeBegan = null;
+  timeStopped = null;
+  document.getElementById("display-area").innerHTML = "00:00:00.000";
+}
+
 function timer() {
-  seconds++;
+  let currentTime = new Date();
 
-  let hrs = Math.floor(seconds / 3600);
-  let mins = Math.floor((seconds - hrs * 3600) / 60);
-  let secs = seconds % 60;
-
+  let timeElapsed = new Date(currentTime - timeBegan - stoppedDuration);
   /*
-  if (hrs < 10) hrs = "0" + hrs;
-  if (mins < 10) mins = "0" + mins;
-  if (secs < 10) secs = "0" + secs;
-
-  time_element.innerText = `${hrs}:${mins}:${secs}`;
+  let hour = timeElapsed.getUTCHours();
+  let min = timeElapsed.getUTCMinutes();
+  let sec = timeElapsed.getUTCSeconds();
+  let ms = timeElapsed.getUTCMilliseconds();
   */
-  hour = timeElapsed.getUTCHours();
-  min = timeElapsed.getUTCMinutes();
-  sec = timeElapsed.getUTCSeconds();
-  ms = timeElapsed.getUTCMilliseconds();
+
+  console.log(timeElapsed)
 
   document.getElementById("display-area").innerHTML =
     (hour > 9 ? hour : "0" + hour) +
@@ -39,22 +61,4 @@ function timer() {
     (sec > 9 ? sec : "0" + sec) +
     "." +
     (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
-}
-
-// timer();
-
-function start() {
-  if (interval) return;
-  interval = setInterval(timer, 10);
-}
-
-function stop() {
-  clearInterval(interval);
-  interval = null;
-}
-
-function reset() {
-  stop();
-  seconds = 0;
-  time_element.innerText = "00:00:00";
 }
