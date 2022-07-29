@@ -2,7 +2,7 @@
 
 ## FIXME
 
-- [ ] The stop button doesnt work after resetting. (Sometimes)
+- [ ] The stop button doesnt work after resetting (After pressing start button again).
 
 ## TODO 
 
