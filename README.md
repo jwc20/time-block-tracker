@@ -1,13 +1,12 @@
 # time-block-tracker
 
-## FIXME
-
-- [ ] The stop button doesnt work after resetting (After pressing start button again).
 
 ## TODO 
 
-- [ ] Split button
-- [ ] Set intervals
+- [x] Split button
+- [x] Set intervals
+- [ ] Make Export Button
+- [ ] Use Date() constructor to measure time (more accurate millisecond)
 
 Based on:
   - https://www.timeblockplanner.com/
