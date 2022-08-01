@@ -39,6 +39,7 @@ function App() {
 
   const addSplitValue = (reason) => {
     setSplitList((split) => [...split, { time, reason }]);
+    console.log(splitList)
   };
 
   const currentInterval = () => {
@@ -51,7 +52,8 @@ function App() {
 
   const onReasonChange = (e) => {
     e.preventDefault();
-    setReason(e.target.value);
+    let inputString = e.target.value
+    addSplitValue(inputString);
   };
 
   const isReset = time === 0;
