@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [time, setTime] = useState(0);
+  const [reason, setReason] = useState("");
   const [isPaused, setIsPaused] = useState(true);
   const [startTime, setStartTime] = useState(null);
   const [splitList, setSplitList] = useState([]);
@@ -48,6 +49,11 @@ function App() {
     return formatTime(time - last.time);
   };
 
+  const onReasonChange = (e) => {
+    e.preventDefault();
+    setReason(e.target.value);
+  };
+
   const isReset = time === 0;
   const timerState = !isPaused ? "Pause" : "Start";
   const formattedTime = formatTime(time);
@@ -85,11 +91,17 @@ function App() {
           return (
             <div className="split-item" key={time}>
               <div>#{i + 1}</div>
-              <div className={reason}>{formatTime(interval)}</div>
               <div>{reason}</div>
+              <input
+                type="text"
+                placeholder={reason}
+                onChange={onReasonChange}
+              />
+              <div className={reason}>{formatTime(interval)}</div>
             </div>
           );
         })}
+        <button className="export">Export</button>
       </div>
     </div>
   );
